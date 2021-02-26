@@ -6,11 +6,6 @@ import pytesseract
 from PIL import Image
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-import smtplib
-import mysql.connector
-server=smtplib.SMTP('smtp.gmail.com',587)
-server.starttls()
-server.login("trafficviolationitb@gmail.com", "traffic@123")
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 30
@@ -51,7 +46,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
              text = pytesseract.image_to_string(Cropped, config='--psm 11')
              print("Detected Number is:",text)
              os.system("sh hi.sh " + text)
-             server.sendmail("siddhantbokil26@gmail.com","siddhantbokil26@gmail.com",text)
+#             server.sendmail("siddhantbokil26@gmail.com","siddhantbokil26@gmail.com",text)
              #cv2.imshow("Frame", image)
              #cv2.imshow('Cropped',Cropped)
              #cv2.waitKey(0)
