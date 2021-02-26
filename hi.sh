@@ -1,0 +1,1 @@
+grep -nr $@ data.txt
