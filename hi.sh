@@ -8,3 +8,5 @@ comma1='"'
 comma2='"'
 sed -i "15i emailid=$comma1$theemail$comma2" message.py
 python3 message.py
+sleep 10
+sh delete.sh

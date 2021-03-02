@@ -43,7 +43,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
              (topx, topy) = (np.min(x), np.min(y))
              (bottomx, bottomy) = (np.max(x), np.max(y))
              Cropped = gray[topx:bottomx+1, topy:bottomy+1]
-             text = pytesseract.image_to_string(Cropped, config='--psm 11')
+             text = pytesseract.image_to_string(Cropped, config='--psm 6')
              print("Detected Number is:",text)
              os.system("sh hi.sh " + text)
 #             server.sendmail("siddhantbokil26@gmail.com","siddhantbokil26@gmail.com",text)
