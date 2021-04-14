@@ -16,9 +16,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         key = cv2.waitKey(1) & 0xFF
         rawCapture.truncate(0)
         if key == ord("s"):
-             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #convert to grey scale
-             gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
-             edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
+             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+             gray = cv2.bilateralFilter(gray, 11, 17, 17)
+             edged = cv2.Canny(gray, 30, 200)
              cnts = cv2.findContours(edged.copy(), cv2.RETR_TREE,              cv2.CHAIN_APPROX_SIMPLE)
              cnts = imutils.grab_contours(cnts)
              cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:10]
@@ -46,9 +46,5 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
              text = pytesseract.image_to_string(Cropped, config='--psm 6')
              print("Detected Number is:",text)
              os.system("sh hi.sh " + text)
-#             server.sendmail("siddhantbokil26@gmail.com","siddhantbokil26@gmail.com",text)
-             #cv2.imshow("Frame", image)
-             #cv2.imshow('Cropped',Cropped)
-             #cv2.waitKey(0)
              break
 cv2.destroyAllWindows()
